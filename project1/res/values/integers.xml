@@ -2,13 +2,10 @@
     
     <integer name="zombie">20</integer>
     <integer name="vampire">40</integer>
-    <integer name="lycan">35</integer>
+    <integer name="lycan">30</integer>
     <integer name="lich">50</integer>
     <integer name="skeleton">10</integer>
-    <integer name="corpse">5</integer>
-    <integer name="mutant">25</integer>
-    <integer name="orc">30</integer>
-    <integer name="barbarian">15</integer>
+    <integer name="ghoul">5</integer>
     <integer name="common">1</integer>
     <integer name="veteran">3</integer>
     <integer name="evolved">5</integer>

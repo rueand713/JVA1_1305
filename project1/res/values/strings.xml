@@ -9,10 +9,7 @@
     <string name="lycan">Lycan</string>
     <string name="lich">Lich</string>
     <string name="skeleton">Skeleton</string>
-    <string name="corpse">Corpse</string>
-    <string name="mutant">Mutant</string>
-    <string name="orc">Orc</string>
-    <string name="barbarian">Barbarian</string>
+    <string name="ghoul">Ghoul</string>
 	<string name="common">Common</string>
 	<string name="veteran">Veteran</string>
 	<string name="evolved">Evolved</string>

@@ -27,17 +27,14 @@ public final class R {
         public static final int action_settings=0x7f080000;
     }
     public static final class integer {
-        public static final int barbarian=0x7f040008;
-        public static final int common=0x7f040009;
-        public static final int corpse=0x7f040005;
-        public static final int evolved=0x7f04000b;
+        public static final int common=0x7f040006;
+        public static final int evolved=0x7f040008;
+        public static final int ghoul=0x7f040005;
         public static final int lich=0x7f040003;
         public static final int lycan=0x7f040002;
-        public static final int mutant=0x7f040006;
-        public static final int orc=0x7f040007;
         public static final int skeleton=0x7f040004;
         public static final int vampire=0x7f040001;
-        public static final int veteran=0x7f04000a;
+        public static final int veteran=0x7f040007;
         public static final int zombie=0x7f040000;
     }
     public static final class menu {
@@ -46,19 +43,16 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int barbarian=0x7f05000b;
-        public static final int common=0x7f05000c;
-        public static final int corpse=0x7f050008;
-        public static final int description=0x7f05000f;
-        public static final int evolved=0x7f05000e;
+        public static final int common=0x7f050009;
+        public static final int description=0x7f05000c;
+        public static final int evolved=0x7f05000b;
+        public static final int ghoul=0x7f050008;
         public static final int lich=0x7f050006;
         public static final int lycan=0x7f050005;
-        public static final int mutant=0x7f050009;
         public static final int namecreature=0x7f050002;
-        public static final int orc=0x7f05000a;
         public static final int skeleton=0x7f050007;
         public static final int vampire=0x7f050004;
-        public static final int veteran=0x7f05000d;
+        public static final int veteran=0x7f05000a;
         public static final int zombie=0x7f050003;
     }
     public static final class style {
