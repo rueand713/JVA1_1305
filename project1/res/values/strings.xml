@@ -3,16 +3,6 @@
 
     <string name="app_name">Java1Project1</string>
     <string name="action_settings">Settings</string>
-    <string name="namecreature">Name for this creature</string>
-    <string name="zombie">Zombie</string>
-    <string name="vampire">Vampire</string>
-    <string name="lycan">Lycan</string>
-    <string name="lich">Lich</string>
-    <string name="skeleton">Skeleton</string>
-    <string name="ghoul">Ghoul</string>
-	<string name="common">Common</string>
-	<string name="veteran">Veteran</string>
-	<string name="evolved">Evolved</string>
-	<string name="description">monster class</string>
+    <string name="instructions">Add 1 or 5 Dogs</string>
     
 </resources>
