@@ -1,3 +1,13 @@
+/*
+ * project 		java1Project2
+ * 
+ * package 		interfaceElements
+ * 
+ * @author 		Rueben Anderson
+ * 
+ * date			May 16, 2013
+ * 
+ */
 package interfaceElements;
 
 import android.content.Context;

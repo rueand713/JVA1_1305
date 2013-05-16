@@ -1,3 +1,13 @@
+/*
+ * project 		java1Project2
+ * 
+ * package 		handlingJSON
+ * 
+ * @author 		Rueben Anderson
+ * 
+ * date			May 16, 2013
+ * 
+ */
 package handlingJSON;
 
 public enum JSONData {

@@ -1,3 +1,13 @@
+/*
+ * project 		java1Project2
+ * 
+ * package 		com.randerson.java1project2
+ * 
+ * @author 		Rueben Anderson
+ * 
+ * date			May 16, 2013
+ * 
+ */
 package com.randerson.java1project2;
 
 import handlingJSON.JSONFactory;
@@ -85,13 +95,11 @@ public class MainActivity extends Activity {
 		
 		// add the child views to the sub layout
 		subLayout.addView(radios);
-		subLayout.addView(btn);
+		subLayout.addView(description);
 		
 		// add the sub layout to the main layout
 		mainLayout.addView(subLayout);
-		
-		// add the description textView to the main layout
-		mainLayout.addView(description);
+		mainLayout.addView(btn);
 
 		// set the view content
 		setContentView(mainLayout);
