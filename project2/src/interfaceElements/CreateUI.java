@@ -10,8 +10,19 @@ import android.widget.TextView;
 
 public class CreateUI {
 
+	// create the class context field
+	static Context context = null;
+	
+	// constructor method for instantiating the class
+	// class has been written to require object instance creation to set the context
+	public CreateUI(Context thisContext)
+	{
+		// set the context of the object
+		context = thisContext;
+	}
+	
 	// method for creating and returning a linear layout object
-	public static LinearLayout createLinearLayout (Context context, boolean isHorizontal, boolean wrapContent)
+	public LinearLayout createLinearLayout (boolean isHorizontal, boolean wrapContent)
 	{
 		// create a new linear layout object for the passed in context
 		LinearLayout thisLayout = new LinearLayout(context);
@@ -54,7 +65,7 @@ public class CreateUI {
 	}
 	
 	// method for creating and returing an editText object
-	public static EditText createEditText(Context context, String hint, int id)
+	public EditText createEditText(String hint, int id)
 	{
 		// creates a new editText object
 		EditText thisEditText = new EditText(context);
@@ -74,7 +85,7 @@ public class CreateUI {
 	}
 	
 	// method for creating and returning a textView object
-	public static TextView createTextView(Context context, String text, int id)
+	public TextView createTextView(String text, int id)
 	{
 		// creates a new textView object
 		TextView thisTextView = new TextView(context);
@@ -94,7 +105,7 @@ public class CreateUI {
 	}
 	
 	// method for creating and returning a button object
-	public static Button createButton(Context context, String text, int id)
+	public Button createButton(String text, int id)
 	{
 		// creates a new button object
 		Button thisButton = new Button(context);
@@ -114,7 +125,7 @@ public class CreateUI {
 	}
 	
 	// method for creating and returning a radio group
-	public static RadioGroup createRadioGroup(Context context, String[] values, int id)
+	public RadioGroup createRadioGroup(String[] values, int id)
 	{
 		// create a new radio group object
 		RadioGroup radios = new RadioGroup(context);

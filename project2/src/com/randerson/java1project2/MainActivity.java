@@ -18,6 +18,9 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		// create an instance of the CreateUI class
+		CreateUI UIFactory = new CreateUI(this);
+		
 		// set the strings from the resource file
 		String paperboy = getString(R.string.paperboy);
 		String lufia2 = getString(R.string.lufia2);
@@ -42,22 +45,22 @@ public class MainActivity extends Activity {
 		int descId = 900;
 		
 		// create the main UI layout
-		LinearLayout mainLayout = CreateUI.createLinearLayout(this, false, false);
+		LinearLayout mainLayout = UIFactory.createLinearLayout(false, false);
 		
 		// create the title textView for the main layout
-		TextView appHeader = CreateUI.createTextView(this, headerText, textViewId);
+		TextView appHeader = UIFactory.createTextView(headerText, textViewId);
 		
 		// create the sub UI layout
-		LinearLayout subLayout = CreateUI.createLinearLayout(this, true, true);
+		LinearLayout subLayout = UIFactory.createLinearLayout(true, true);
 		
 		// create the radio group for the sub layout
-		final RadioGroup radios = CreateUI.createRadioGroup(this, radioValues, radioId);
+		final RadioGroup radios = UIFactory.createRadioGroup(radioValues, radioId);
 		
 		// create the description textView for the main layout
-		final TextView description = CreateUI.createTextView(this, "", descId);
+		final TextView description = UIFactory.createTextView("", descId);
 		
 		// create the button for the sub layout
-		Button btn = CreateUI.createButton(this, buttonText, buttonId);
+		Button btn = UIFactory.createButton(buttonText, buttonId);
 				
 		// set the button click event
 		btn.setOnClickListener(new View.OnClickListener() {
