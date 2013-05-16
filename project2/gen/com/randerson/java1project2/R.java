@@ -36,6 +36,7 @@ public final class R {
         public static final int battlefield=0x7f040011;
         public static final int bethesda=0x7f040019;
         public static final int bungie=0x7f040017;
+        public static final int buttonText=0x7f040028;
         public static final int cod4=0x7f040010;
         public static final int ea=0x7f04001b;
         public static final int goldeneye=0x7f04000c;
@@ -54,6 +55,7 @@ public final class R {
         public static final int rare=0x7f040015;
         public static final int rareware=0x7f040014;
         public static final int snes=0x7f040004;
+        public static final int textHeader=0x7f040027;
         public static final int various=0x7f040003;
         public static final int xb360Ps3=0x7f040008;
         public static final int xbox=0x7f040006;

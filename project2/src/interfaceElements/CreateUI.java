@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class CreateUI {
@@ -109,5 +111,37 @@ public class CreateUI {
 		
 		// return the object
 		return thisButton;
+	}
+	
+	// method for creating and returning a radio group
+	public static RadioGroup createRadioGroup(Context context, String[] values, int id)
+	{
+		// create a new radio group object
+		RadioGroup radios = new RadioGroup(context);
+		
+		for (int i = 0; i < values.length; i++)
+		{
+			// create a new radio button object
+			RadioButton rb = new RadioButton(context);
+			
+			// set the text of that radio button
+			rb.setText(values[i]);
+			
+			// set the radio button id to one more than its index
+			rb.setId(i+1);
+			
+			// add the radio button to the group
+			radios.addView(rb);
+		}
+		
+		// check for a valid id to set otherwise ignore
+		if (id > 0)
+		{
+			// set the radio group object identifier
+			radios.setId(id);
+		}
+		
+		// return the object
+		return radios;
 	}
 }

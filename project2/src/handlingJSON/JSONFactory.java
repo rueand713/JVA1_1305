@@ -43,8 +43,42 @@ public class JSONFactory {
 	}
 	
 	// method for reading the JSON object returned from the createJSONObject method
-	public static void readJSONObject()
+	public static String readJSONObject(String selectString)
 	{
+		// Strings to hold the corresponding JSON data
+		String developer;
+		String platform;
+		String release;
+		String title;
 		
+		// the string of JSON data to be returned
+		String returnString;
+		
+		// create the JSONObject from createJSONObject method
+		JSONObject gamesObject = createJSONObject();
+		
+		try {
+			
+			// set the strings to their JSON object values
+			developer = gamesObject.getJSONObject("query").getJSONObject(selectString).getString("developer");
+			platform = gamesObject.getJSONObject("query").getJSONObject(selectString).getString("platform");
+			release = gamesObject.getJSONObject("query").getJSONObject(selectString).getString("release");
+			title = gamesObject.getJSONObject("query").getJSONObject(selectString).getString("title");
+			
+			// create the return string from the retrieved JSON values
+			returnString = "Title: " + title + "\r\n"
+						+ "Developed by " + developer + "\r\n"
+						+ "Platform: " + platform + "\r\n"
+						+ "Released in " + release;
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			// return the error in string
+			returnString = e.toString();
+		}
+		
+		return returnString;
 	}
 }
