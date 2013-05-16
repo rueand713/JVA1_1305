@@ -60,8 +60,12 @@ public class CreateUI {
 		// set the editText object hint
 		thisEditText.setHint(hint);
 		
-		// set the editText object identifier
-		thisEditText.setId(id);
+		// check for valid id to set otherwise ignores id setting
+		if (id > 0) 
+		{
+			// set the editText object identifier
+			thisEditText.setId(id);
+		}
 		
 		// return the object
 		return thisEditText;
@@ -76,8 +80,12 @@ public class CreateUI {
 		// sets the text for the textView object
 		thisTextView.setText(text);
 		
-		// sets the textView object identifier
-		thisTextView.setId(id);
+		// check for valid id to set otherwise ignores id setting
+		if (id > 0) 
+		{
+			// sets the textView object identifier
+			thisTextView.setId(id);
+		}
 		
 		// return the object
 		return thisTextView;
@@ -92,8 +100,12 @@ public class CreateUI {
 		// sets the button text
 		thisButton.setText(text);
 
-		// sets the button object identifier
-		thisButton.setId(id);
+		// check for valid id to set otherwise ignores id setting
+		if (id > 0)
+		{
+			// sets the button object identifier
+			thisButton.setId(id);
+		}
 		
 		// return the object
 		return thisButton;
