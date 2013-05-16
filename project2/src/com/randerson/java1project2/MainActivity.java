@@ -1,5 +1,6 @@
 package com.randerson.java1project2;
 
+import interfaceElements.CreateUI;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -12,13 +13,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		// create the main UI layout, setting the params and the orientation. This is the parent view of the application views
-		LinearLayout mainLayout = new LinearLayout(this);
-		LinearLayout.LayoutParams mainParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-		mainLayout.setOrientation(LinearLayout.VERTICAL);
-		mainLayout.setLayoutParams(mainParams);
-		
+		LinearLayout mainLayout = CreateUI.createLinearLayout(this, false, false);
+
+		// set the view content
 		setContentView(mainLayout);
-		
 	}
 
 	@Override

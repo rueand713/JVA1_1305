@@ -41,7 +41,7 @@ public class CreateUI {
 		else
 		{
 			// define the layout param object to match its parent
-			layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+			layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 			
 			// set the layout param for the linear layout
 			thisLayout.setLayoutParams(layoutParams);

@@ -4,5 +4,41 @@
     <string name="app_name">java1Project2</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-
+    <string name="various">Various</string>
+    <string name="snes">Super Nintendo</string>
+    <string name="n64">Nintendo 64</string>
+    <string name="xbox">Xbox</string>
+    <string name="xbox360">Xbox 360</string>
+	<string name="xb360Ps3">Xbox 360 / Playstation 3</string>
+	<string name="paperboy">Paperboy</string>
+	<string name="ki">Killer Instinct</string>
+	<string name="lufia2">Lufia 2: Rise of The Sinistrals</string>
+	<string name="goldeneye">Golden Eye 007</string>
+	<string name="zelda">Legend of Zelda: Ocarina of Time</string>
+	<string name="halo">Halo: Combat Evolved</string>
+	<string name="oblivion">Elder Scrolls IV: Oblivion</string>
+	<string name="cod4">Call of Duty 4: Modern Warfare</string>
+	<string name="battlefield">Battlefield: Bad Company 2</string>
+	<string name="minecraft">MineCraft</string>
+	<string name="atari">Atari Games</string>
+	<string name="rareware">Rareware</string>
+	<string name="rare">Rare</string>
+	<string name="nintendo">Nintendo</string>
+	<string name="bungie">Bungie</string>
+	<string name="neverland">Neverland</string>
+	<string name="bethesda">Bethesda Softworks</string>
+	<string name="infinity">Infinity Ward</string>
+	<string name="ea">Electronic Arts</string>
+	<string name="mojang">4J Studios</string>
+	<string name="y84">1984 - 1991</string>
+	<string name="y95">1995</string>
+	<string name="y96">1996</string>
+	<string name="y97">1997</string>
+	<string name="y98">1998</string>
+	<string name="y01">2001</string>
+	<string name="y06">2006</string>
+	<string name="y07">2007</string>
+	<string name="y10">2010</string>
+	<string name="y12">2012</string>
+    
 </resources>

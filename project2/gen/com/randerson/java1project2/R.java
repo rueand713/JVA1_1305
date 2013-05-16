@@ -32,7 +32,43 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f040001;
         public static final int app_name=0x7f040000;
+        public static final int atari=0x7f040013;
+        public static final int battlefield=0x7f040011;
+        public static final int bethesda=0x7f040019;
+        public static final int bungie=0x7f040017;
+        public static final int cod4=0x7f040010;
+        public static final int ea=0x7f04001b;
+        public static final int goldeneye=0x7f04000c;
+        public static final int halo=0x7f04000e;
         public static final int hello_world=0x7f040002;
+        public static final int infinity=0x7f04001a;
+        public static final int ki=0x7f04000a;
+        public static final int lufia2=0x7f04000b;
+        public static final int minecraft=0x7f040012;
+        public static final int mojang=0x7f04001c;
+        public static final int n64=0x7f040005;
+        public static final int neverland=0x7f040018;
+        public static final int nintendo=0x7f040016;
+        public static final int oblivion=0x7f04000f;
+        public static final int paperboy=0x7f040009;
+        public static final int rare=0x7f040015;
+        public static final int rareware=0x7f040014;
+        public static final int snes=0x7f040004;
+        public static final int various=0x7f040003;
+        public static final int xb360Ps3=0x7f040008;
+        public static final int xbox=0x7f040006;
+        public static final int xbox360=0x7f040007;
+        public static final int y01=0x7f040022;
+        public static final int y06=0x7f040023;
+        public static final int y07=0x7f040024;
+        public static final int y10=0x7f040025;
+        public static final int y12=0x7f040026;
+        public static final int y84=0x7f04001d;
+        public static final int y95=0x7f04001e;
+        public static final int y96=0x7f04001f;
+        public static final int y97=0x7f040020;
+        public static final int y98=0x7f040021;
+        public static final int zelda=0x7f04000d;
     }
     public static final class style {
         /** 
