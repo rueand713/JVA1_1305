@@ -171,6 +171,8 @@ public class ioManager {
 					
 				} catch (IOException e) {
 					Log.e("READ ERROR", "Error reading string content from file.");
+					
+					return null;
 				}
 			
 			// return the object

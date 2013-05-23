@@ -2,9 +2,12 @@ package com.randerson.java1project3;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import storageMethods.ioManager;
 
 import networkingMethods.connectionManager;
 import handleJSON.JSONFactory;
@@ -12,6 +15,7 @@ import interfaceMethods.CreateUI;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -31,14 +35,15 @@ public class MainActivity extends Activity {
 	LinearLayout subLayout;
 	LinearLayout detailLayout;
 	LinearLayout leftDetailView;
-	LinearLayout rightDetailView;
+	//LinearLayout rightDetailView;
 	
 	// setup the views for weather detail layout
-	TextView currentConditionValue;
-	TextView tempValue;
-	TextView humidityValue;
-	TextView windSpeedValue;
-	TextView windDirValue;
+	TextView currentCondition;
+	TextView temp;
+	TextView humidity;
+	TextView windSpeed;
+	TextView windDir;
+	TextView header;
 	
 	// setup the radio group
 	RadioGroup radios;
@@ -49,12 +54,43 @@ public class MainActivity extends Activity {
 	// URL for the get request
 	URL weatherURL;
 	
+	// setup the memory hash object
+	HashMap<String, String> memHash;
+	
+	// setup the context
+	Context _context;
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		// set the context
+		_context = this;
+		
+		// load the previous hashfile
+		memHash = (HashMap<String, String>) ioManager.readObjectFile(this, "history", true);
+		
 		// checks if there is a network connection
 		connected = connectionManager.getConnectionStatus(this);
+		//String conType = connectionManager.getConnectionType(this);
+		
+		/*Toast msg = new Toast(this);
+		msg.setDuration(15);
+		
+		if (connected)
+		{
+			// set the toast text
+			msg.setText(conType + "Network detected");
+		}
+		else
+		{
+			// set the toast text
+			msg.setText("No Connection");
+		}
+		
+		// show the toast
+		msg.show();*/
 		
 		// integers for representing the various view ids
 		int textId = 133;
@@ -80,25 +116,47 @@ public class MainActivity extends Activity {
 		subLayout = UIFactory.createLinearLayout(true, true);
 		detailLayout = UIFactory.createLinearLayout(true, true);
 		leftDetailView = UIFactory.createLinearLayout(false, false);
-		rightDetailView = UIFactory.createLinearLayout(false, false);
+		//rightDetailView = UIFactory.createLinearLayout(false, false);
 		
 		// creates the text views for the weather detail layout
-		currentConditionValue = UIFactory.createTextView(" ", 0);
-		tempValue = UIFactory.createTextView(" ", 0);
-		humidityValue = UIFactory.createTextView(" ", 0);
-		windSpeedValue = UIFactory.createTextView(" ", 0);
-		windDirValue = UIFactory.createTextView(" ", 0);
+		/*currentConditionValue = UIFactory.createTextView("N/A", 1);
+		tempValue = UIFactory.createTextView("N/A", 2);
+		humidityValue = UIFactory.createTextView("N/A", 3);
+		windSpeedValue = UIFactory.createTextView("N/A", 4);
+		windDirValue = UIFactory.createTextView("N/A", 5);*/
 		
 		// creates the textViews with the UIFactory instance
 		TextView instText = UIFactory.createTextView(instructions, textId);
 		TextView titleText = UIFactory.createTextView(title, textId * 2);
+		header = UIFactory.createTextView("", 0);
 		
 		// creates the text views for the weather detail layout
-		TextView currentCondition = UIFactory.createTextView("Current Condition: ", 0);
-		TextView temp = UIFactory.createTextView("Temperature: ", 0);
-		TextView humidity = UIFactory.createTextView("Humidity: ", 0);
-		TextView windSpeed = UIFactory.createTextView("Wind Speed: ", 0);
-		TextView windDir = UIFactory.createTextView("Wind Direction: ", 0);
+		currentCondition = UIFactory.createTextView("Current Condition: ", 0);
+		temp = UIFactory.createTextView("Temperature: ", 0);
+		humidity = UIFactory.createTextView("Humidity: ", 0);
+		windSpeed = UIFactory.createTextView("Wind Speed: ", 0);
+		windDir = UIFactory.createTextView("Wind Direction: ", 0);
+		
+		// adds previous values if they exist in file
+		if (memHash != null)
+		{
+			// temp strings for the weather data
+			String cc = memHash.get("cond");
+			String tmp = memHash.get("temp");
+			String hum = memHash.get("humi");
+			String wsp = memHash.get("wspd");
+			String wdi = memHash.get("wdir");
+			
+			// sets the last weather data saved/viewed
+			currentCondition.setText("Current Condition: " + cc);
+			temp.setText("Temperature: " + tmp);
+			humidity.setText("Humidity: " + hum);
+			windSpeed.setText("Wind Speed: " + wsp);
+			windDir.setText("Wind Direction: " + wdi);
+			
+			// sets the previous header text
+			header.setText("Previous Conditions");
+		}
 		
 		// create the radiogroup with the UIFactory instance
 		radios = UIFactory.createRadioGroup(locales, radioId);
@@ -128,8 +186,10 @@ public class MainActivity extends Activity {
 						// create a URL object from the api strings
 						weatherURL = new URL(restStringA + selectedValue + restStringB);
 						
+						// creates the new request object
 						doRequest req = new doRequest();
 						
+						// starts the request
 						req.execute(weatherURL);
 						
 					} catch (MalformedURLException e) {
@@ -145,22 +205,22 @@ public class MainActivity extends Activity {
 		subLayout.addView(radios);
 		
 		// add the child views to the left detailView layout
+		leftDetailView.addView(header);
 		leftDetailView.addView(currentCondition);
 		leftDetailView.addView(temp);
 		leftDetailView.addView(humidity);
 		leftDetailView.addView(windSpeed);
 		leftDetailView.addView(windDir);
 		
-		// add the child views to the right detaliView layout
+		/*// add the child views to the right detaliView layout
 		rightDetailView.addView(currentConditionValue);
 		rightDetailView.addView(tempValue);
 		rightDetailView.addView(humidityValue);
 		rightDetailView.addView(windSpeedValue);
-		rightDetailView.addView(windDirValue);
+		rightDetailView.addView(windDirValue);*/
 		
 		// add the child views to the detail layout
 		detailLayout.addView(leftDetailView);
-		detailLayout.addView(rightDetailView);
 		
 		// add the child views to the mainlayout
 		mainLayout.addView(titleText);
@@ -208,11 +268,11 @@ public class MainActivity extends Activity {
 			Log.i("RESPONSE", result);
 			
 			// create JSON objects from the result string
-			// that object is then querried for the particular key and the string is returned and set
-			String temp = JSONFactory.readJSONObject(result, "temp_F");
-			String humidity = JSONFactory.readJSONObject(result, "humidity");
+			// that object is then queried for the particular key and the string is returned and set
+			String tempf = JSONFactory.readJSONObject(result, "temp_F");
+			String humidityf = JSONFactory.readJSONObject(result, "humidity");
 			String condition = "";
-			String windSpeed = JSONFactory.readJSONObject(result, "windspeedMiles");
+			String windSpeedm = JSONFactory.readJSONObject(result, "windspeedMiles");
 			String windDirection = JSONFactory.readJSONObject(result, "winddir16Point");
 			
 			// create a new separate JSON object
@@ -226,11 +286,22 @@ public class MainActivity extends Activity {
 			}
 			
 			// set the detail view data
-			currentConditionValue.setText(condition);
-			humidityValue.setText(humidity);
-			tempValue.setText(temp);
-			windSpeedValue.setText(windSpeed);
-			windDirValue.setText(windDirection);
+			currentCondition.setText("Current Condition: " + condition);
+			humidity.setText("Humidity: " + humidityf);
+			temp.setText("Temperature: " + tempf);
+			windSpeed.setText("Wind Speed: " + windSpeedm);
+			windDir.setText("Wind Direction: " + windDirection);
+			header.setText("Current Conditions");
+			
+			// save the data to hash
+			ioManager.setStorageHash("cond", condition, memHash);
+			ioManager.setStorageHash("humi", humidityf, memHash);
+			ioManager.setStorageHash("temp", tempf, memHash);
+			ioManager.setStorageHash("wspd", windSpeedm, memHash);
+			ioManager.setStorageHash("wdir", windDirection, memHash);
+			
+			// save the hash to internal storage
+			ioManager.writeObjectFile(_context, memHash, "history", true);
 		}
 	}
 
