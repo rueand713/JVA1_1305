@@ -1,8 +1,14 @@
 package networkingMethods;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 public class connectionManager {
 
@@ -53,10 +59,46 @@ public class connectionManager {
 		
 	}
 	
-	public static String makeStringRequest()
+	//  method for making a web request for string data
+	public static String makeStringRequest(URL urlString)
 	{
+		// string object to hold the URL response text
 		String responseText = "";
 		
+		try {
+			// create a new URL connection object
+			URLConnection connection = urlString.openConnection();
+			
+			// creates a new buffer input stream with the URL connection object
+			BufferedInputStream bfStream = new BufferedInputStream(connection.getInputStream());
+			
+			// create a new byte array
+			byte[] contentBytes = new byte[1024];
+			
+			// integer to handle the number of bytes read
+			int readBytes = 0;
+			
+			// create a new string buffer object
+			StringBuffer buffString = new StringBuffer();
+			
+			// loop to handle the appending of the string content to buffer
+			while ((readBytes = bfStream.read(contentBytes)) != -1)
+			{
+				// set the response string to the string content read
+				responseText = new String(contentBytes, 0, readBytes);
+				
+				// appends the new string content to the buffer string object
+				buffString.append(responseText);
+			}
+			
+			// set the responseText to the full buffered string content in buffer
+			responseText = buffString.toString();
+			
+		} catch (IOException e) {
+			Log.e("URL RESPONSE ERROR", "Server failed to respond to request");
+		}
+		
+		// return the response string
 		return responseText;
 	}
 	

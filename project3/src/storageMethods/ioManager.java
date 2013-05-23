@@ -73,11 +73,11 @@ public class ioManager {
 				fileInput.close();
 				
 			} catch (IOException e) {
-				Log.i("READ ERROR", "Error reading string content from file.");
+				Log.e("READ ERROR", "Error reading string content from file.");
 			}
 			
 		} catch (FileNotFoundException e) {
-			Log.i("FILE NOT FOUND", "No file with the specified name was found.");
+			Log.e("FILE NOT FOUND", "No file with the specified name was found.");
 		}
 		
 		// return the object
@@ -160,7 +160,7 @@ public class ioManager {
 					// set the object to object read from stream
 					objectContent = (Object) objectInput.readObject();
 				} catch (ClassNotFoundException e) {
-					Log.i("READ ERROR", "Invalid Java Object file");
+					Log.e("READ ERROR", "Invalid Java Object file");
 				}
 				
 				// close the object input stream
@@ -170,7 +170,7 @@ public class ioManager {
 				fileInput.close();
 					
 				} catch (IOException e) {
-					Log.i("READ ERROR", "Error reading string content from file.");
+					Log.e("READ ERROR", "Error reading string content from file.");
 				}
 			
 			// return the object
