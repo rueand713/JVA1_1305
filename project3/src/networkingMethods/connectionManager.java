@@ -53,4 +53,11 @@ public class connectionManager {
 		
 	}
 	
+	public static String makeStringRequest()
+	{
+		String responseText = "";
+		
+		return responseText;
+	}
+	
 }

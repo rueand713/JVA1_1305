@@ -1,11 +1,14 @@
 package interfaceMethods;
 
 import android.content.Context;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class CreateUI {
@@ -153,5 +156,30 @@ public class CreateUI {
 			
 			// return the object
 			return radios;
+		}
+		
+		// method for creating and returning a spinner object
+		public Spinner createSpinner(String[] values, int id)
+		{
+			// create a spinner object
+			Spinner spinner = new Spinner(context);
+			
+			// create a layout params object
+			LayoutParams params = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
+			
+			// set the layout params for the spinner
+			spinner.setLayoutParams(params);
+			
+			// create an ArrayAdapter object
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, values);
+			
+			// set the spinner dropdown resource
+			adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+			
+			// set the spinner adapter
+			spinner.setAdapter(adapter);
+			
+			// return the object
+			return spinner;
 		}
 }
