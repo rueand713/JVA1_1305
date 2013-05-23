@@ -7,5 +7,6 @@
     <string name="instructions">Select a location</string>
     <string name="titletext">Weather Feed</string>
     <string name="buttontext">Get Weather</string>
+    <string name="apikey">2xhsswmswuh5c65xxnrcdqv4</string>
 
 </resources>
