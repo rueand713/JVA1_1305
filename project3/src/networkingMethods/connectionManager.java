@@ -49,11 +49,16 @@ public class connectionManager {
 		{
 			// the network info object is created now it checks for a connection
 			// if there is a connection the connected and connectionType fields are set to reflect that data
-			// otherwise the fields are left to their default values
+			// otherwise the fields are set to their default values
 			if (net411.isConnected())
 			{
 				connectionStatus = true;
 				connectionType = net411.getTypeName();
+			}
+			else
+			{
+				connectionStatus = false;
+				connectionType = "No Connection";
 			}
 		}
 		

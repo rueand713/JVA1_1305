@@ -24,10 +24,10 @@
         
         <RadioGroup android:id="@+id/locales" android:layout_width="wrap_content" 
         	android:layout_height="match_parent">
-	        <RadioButton android:text="Houston"/>
-	        <RadioButton android:text="Chicago"/>
-	        <RadioButton android:text="Miami"/>
-	        <RadioButton android:text="Seattle"/>
+	        <RadioButton android:text="@string/houston"/>
+	        <RadioButton android:text="@string/chicago"/>
+	        <RadioButton android:text="@string/miami"/>
+	        <RadioButton android:text="@string/seattle"/>
     	</RadioGroup>
         
     </LinearLayout>
@@ -56,7 +56,7 @@
             
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Condition: "/>
+                android:text="@string/condition"/>
             
             <TextView android:id="@+id/currentcondition"
                 android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
             
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Temperature: "/>
+                android:text="@string/temp"/>
             
             <TextView android:id="@+id/tempcondition"
                 android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
             
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Humidity: "/>
+                android:text="@string/humidity"/>
             
             <TextView android:id="@+id/humiditycondition"
                 android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
             
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wind Speed: "/>
+                android:text="@string/winspd"/>
             
             <TextView android:id="@+id/winspdcondition"
                 android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
             
            <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wind Direction: "/>
+                android:text="@string/windir"/>
             
             <TextView android:id="@+id/windircondition"
                 android:layout_width="wrap_content"

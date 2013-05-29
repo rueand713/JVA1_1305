@@ -22,7 +22,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -61,24 +60,41 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		// set the content view to the layout file
 		setContentView(layout.radioform);
 		
 		// set the context
 		_context = this;
 		
+		// save the hash to internal storage
+					Boolean success = ioManager.writeStringFile(_context, "hello", "history", false);
+					
+					String suc = "failed";
+					
+					if (success)
+					{
+						suc = "Success";
+					}
+					
+					Log.i("ALERT", suc);
+		
 		// load the previous hashfile
 		memHash = (HashMap<String, String>) ioManager.readObjectFile(this, "history", true);
+		
+		String mem = "NULL";
+		
+		if (memHash != null)
+		{
+			mem = "SAVED";
+		}
+		
+		Log.i("MEMORY", mem);
 		
 		// checks if there is a network connection
 		connected = connectionManager.getConnectionStatus(this);
 		
 		// call the method for displaying the toast
 		displayToast();
-		
-		// integers for representing the various view ids
-		int textId = 133;
-		int buttonId = 177;
-		int radioId = 199;
 		
 		// api request string parts
 		// the strings will be concatenated with the selected location and passed as the request
@@ -129,38 +145,41 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				// get the id of the currently selected radio button
-				int selectedId = radios.getCheckedRadioButtonId();
-				
-				// create an instance of the radio button that is currently selected
-				RadioButton rBtn = (RadioButton) findViewById(selectedId);
-				
-				// retrieve the selected button text value from the instance
-				String selectedValue = rBtn.getText().toString();
-				
 				// checks if there is a network connection
 				connected = connectionManager.getConnectionStatus(_context);
 				
 				// call the method for displaying the toast
 				displayToast();
 				
-				// check to make sure there was an active network
-				if (connected == true)
+				// get the id of the currently selected radio button
+				int selectedId = radios.getCheckedRadioButtonId();
+				
+				// create an instance of the radio button that is currently selected
+				RadioButton rBtn = (RadioButton) findViewById(selectedId);
+				
+				// do a quick check to make sure that a selected button is returned
+				if (rBtn != null)
 				{
-					try {
-						// create a URL object from the api strings
-						weatherURL = new URL(restStringA + selectedValue + restStringB);
-						
-						// creates the new request object
-						doRequest req = new doRequest();
-						
-						// starts the request
-						req.execute(weatherURL);
-						
-					} catch (MalformedURLException e) {
-						Log.e("URL ERROR", "Malformed URL");
+					// retrieve the selected button text value from the instance
+					String selectedValue = rBtn.getText().toString();
+				
+					// check to make sure there was an active network
+					if (connected == true)
+					{
+						try {
+							// create a URL object from the api strings
+							weatherURL = new URL(restStringA + selectedValue + restStringB);
+							
+							// creates the new request object
+							doRequest req = new doRequest();
+							
+							// starts the request
+							req.execute(weatherURL);
+							
+						} catch (MalformedURLException e) {
+							Log.e("URL ERROR", "Malformed URL");
+						}
 					}
-					
 				}
 			}
 		});
@@ -250,14 +269,33 @@ public class MainActivity extends Activity {
 			header.setText("Current Conditions");
 			
 			// save the data to hash
-			ioManager.setStorageHash("cond", condition, memHash);
+			/*ioManager.setStorageHash("cond", condition, memHash);
 			ioManager.setStorageHash("humi", humidityf, memHash);
 			ioManager.setStorageHash("temp", tempf, memHash);
 			ioManager.setStorageHash("wspd", windSpeedm, memHash);
 			ioManager.setStorageHash("wdir", windDirection, memHash);
+			*/
+			memHash = new HashMap<String, String>();
+			
+			memHash.put("cond", condition);
+			memHash.put("humi", humidityf);
+			memHash.put("temp", tempf);
+			memHash.put("wspd", windSpeedm);
+			memHash.put("wdir", windDirection);
 			
 			// save the hash to internal storage
-			ioManager.writeObjectFile(_context, memHash, "history", true);
+			Boolean success = ioManager.writeObjectFile(_context, "hello", "history", false);
+			
+			String suc = "failed";
+			
+			if (success)
+			{
+				suc = "Success";
+			}
+			
+			Log.i("ALERT", suc);
+			
+			
 		}
 	}
 

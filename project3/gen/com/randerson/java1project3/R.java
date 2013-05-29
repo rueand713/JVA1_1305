@@ -48,9 +48,18 @@ public final class R {
         public static final int apikey=0x7f050006;
         public static final int app_name=0x7f050000;
         public static final int buttontext=0x7f050005;
+        public static final int chicago=0x7f050008;
+        public static final int condition=0x7f05000b;
         public static final int hello_world=0x7f050002;
+        public static final int houston=0x7f050007;
+        public static final int humidity=0x7f05000c;
         public static final int instructions=0x7f050003;
+        public static final int miami=0x7f050009;
+        public static final int seattle=0x7f05000a;
+        public static final int temp=0x7f05000d;
         public static final int titletext=0x7f050004;
+        public static final int windir=0x7f05000f;
+        public static final int winspd=0x7f05000e;
     }
     public static final class style {
         /** 
