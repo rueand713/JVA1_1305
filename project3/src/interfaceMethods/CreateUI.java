@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CreateUI {
 	// create the class context field
@@ -181,5 +182,26 @@ public class CreateUI {
 			
 			// return the object
 			return spinner;
+		}
+		
+		public Toast createToast(CharSequence text, boolean isLongToast)
+		{
+			// integer for the toast duration
+			int duration;
+			
+			// check whether the toast should be long or short
+			if (isLongToast)
+			{
+				duration = Toast.LENGTH_LONG;
+			}
+			else
+			{
+				duration = Toast.LENGTH_SHORT;
+			}
+			
+			// create a new toast object
+			Toast newToast = Toast.makeText(context, text, duration);
+			
+			return newToast;
 		}
 }

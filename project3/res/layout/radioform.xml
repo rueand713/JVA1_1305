@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView android:id="@+id/title"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:paddingBottom="10dip"
+        android:text="@string/titletext"
+    />
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <TextView android:id="@+id/instructions"
+            android:layout_width="match_parent" 
+	        android:layout_height="wrap_content" 
+	        android:paddingBottom="10dip"
+	        android:text="@string/instructions"
+    	/>
+        
+        <RadioGroup android:id="@+id/locales" android:layout_width="wrap_content" 
+        	android:layout_height="match_parent">
+	        <RadioButton android:text="Houston"/>
+	        <RadioButton android:text="Chicago"/>
+	        <RadioButton android:text="Miami"/>
+	        <RadioButton android:text="Seattle"/>
+    	</RadioGroup>
+        
+    </LinearLayout>
+    
+    <Button android:id="@+id/weather_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/buttontext"
+    />
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <TextView android:id="@+id/conditionheader" 
+            	android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Weather"
+                android:textAlignment="center"
+                android:paddingBottom="10dip"/>
+        
+        <GridLayout android:id="@+id/gridconditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2">
+            
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Condition: "/>
+            
+            <TextView android:id="@+id/currentcondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+            
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperature: "/>
+            
+            <TextView android:id="@+id/tempcondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+            
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Humidity: "/>
+            
+            <TextView android:id="@+id/humiditycondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+            
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wind Speed: "/>
+            
+            <TextView android:id="@+id/winspdcondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+            
+           <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wind Direction: "/>
+            
+            <TextView android:id="@+id/windircondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+            
+        </GridLayout>
+        
+    </LinearLayout>
+
+    
+
+</LinearLayout>

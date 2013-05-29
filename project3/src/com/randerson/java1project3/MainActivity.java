@@ -7,6 +7,8 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.randerson.java1project3.R.layout;
+
 import storageMethods.ioManager;
 
 import networkingMethods.connectionManager;
@@ -24,18 +26,12 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
 	// creates a new instance of the CreateUI class
 	CreateUI UIFactory = new CreateUI(this);
-	
-	// set up the main, sub, detail, and detailViews layouts
-	LinearLayout mainLayout;
-	LinearLayout subLayout;
-	LinearLayout detailLayout;
-	LinearLayout leftDetailView;
-	//LinearLayout rightDetailView;
 	
 	// setup the views for weather detail layout
 	TextView currentCondition;
@@ -65,6 +61,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		setContentView(layout.radioform);
+		
 		// set the context
 		_context = this;
 		
@@ -73,24 +71,9 @@ public class MainActivity extends Activity {
 		
 		// checks if there is a network connection
 		connected = connectionManager.getConnectionStatus(this);
-		//String conType = connectionManager.getConnectionType(this);
 		
-		/*Toast msg = new Toast(this);
-		msg.setDuration(15);
-		
-		if (connected)
-		{
-			// set the toast text
-			msg.setText(conType + "Network detected");
-		}
-		else
-		{
-			// set the toast text
-			msg.setText("No Connection");
-		}
-		
-		// show the toast
-		msg.show();*/
+		// call the method for displaying the toast
+		displayToast();
 		
 		// integers for representing the various view ids
 		int textId = 133;
@@ -103,39 +86,15 @@ public class MainActivity extends Activity {
 		final String restStringA = "http://api.worldweatheronline.com/free/v1/weather.ashx?q=";
 		final String restStringB = "&format=json&num_of_days=5&key=" + apiKey;
 		
-		// strings for the various app views
-		String instructions = getString(R.string.instructions);
-		String title = getString(R.string.titletext);
-		String btnText = getString(R.string.buttontext);
-		
-		// array for populating radio group
-		String[] locales = {"Houston", "Miami", "New York", "Los Angeles", "Seattle", "Chicago"};
-		
-		// creates the main, sub, detail, and detailViews layouts with the UIFactory instance
-		mainLayout = UIFactory.createLinearLayout(false, false);
-		subLayout = UIFactory.createLinearLayout(true, true);
-		detailLayout = UIFactory.createLinearLayout(true, true);
-		leftDetailView = UIFactory.createLinearLayout(false, false);
-		//rightDetailView = UIFactory.createLinearLayout(false, false);
-		
-		// creates the text views for the weather detail layout
-		/*currentConditionValue = UIFactory.createTextView("N/A", 1);
-		tempValue = UIFactory.createTextView("N/A", 2);
-		humidityValue = UIFactory.createTextView("N/A", 3);
-		windSpeedValue = UIFactory.createTextView("N/A", 4);
-		windDirValue = UIFactory.createTextView("N/A", 5);*/
-		
 		// creates the textViews with the UIFactory instance
-		TextView instText = UIFactory.createTextView(instructions, textId);
-		TextView titleText = UIFactory.createTextView(title, textId * 2);
-		header = UIFactory.createTextView("", 0);
+		header = (TextView) findViewById(R.id.conditionheader);
 		
 		// creates the text views for the weather detail layout
-		currentCondition = UIFactory.createTextView("Current Condition: ", 0);
-		temp = UIFactory.createTextView("Temperature: ", 0);
-		humidity = UIFactory.createTextView("Humidity: ", 0);
-		windSpeed = UIFactory.createTextView("Wind Speed: ", 0);
-		windDir = UIFactory.createTextView("Wind Direction: ", 0);
+		currentCondition = (TextView) findViewById(R.id.currentcondition);
+		temp = (TextView) findViewById(R.id.tempcondition);
+		humidity = (TextView) findViewById(R.id.humiditycondition);
+		windSpeed = (TextView) findViewById(R.id.winspdcondition);
+		windDir = (TextView) findViewById(R.id.windircondition);
 		
 		// adds previous values if they exist in file
 		if (memHash != null)
@@ -148,21 +107,21 @@ public class MainActivity extends Activity {
 			String wdi = memHash.get("wdir");
 			
 			// sets the last weather data saved/viewed
-			currentCondition.setText("Current Condition: " + cc);
-			temp.setText("Temperature: " + tmp);
-			humidity.setText("Humidity: " + hum);
-			windSpeed.setText("Wind Speed: " + wsp);
-			windDir.setText("Wind Direction: " + wdi);
+			currentCondition.setText(cc);
+			temp.setText(tmp);
+			humidity.setText(hum);
+			windSpeed.setText(wsp);
+			windDir.setText(wdi);
 			
 			// sets the previous header text
 			header.setText("Previous Conditions");
 		}
 		
 		// create the radiogroup with the UIFactory instance
-		radios = UIFactory.createRadioGroup(locales, radioId);
+		radios = (RadioGroup) findViewById(R.id.locales);
 		
 		// creates the button with the UIFactory instance
-		Button sendBtn = UIFactory.createButton(btnText, buttonId);
+		Button sendBtn = (Button) findViewById(R.id.weather_btn);
 		
 		// set up the on click for the send button
 		sendBtn.setOnClickListener(new View.OnClickListener() {
@@ -179,8 +138,14 @@ public class MainActivity extends Activity {
 				// retrieve the selected button text value from the instance
 				String selectedValue = rBtn.getText().toString();
 				
+				// checks if there is a network connection
+				connected = connectionManager.getConnectionStatus(_context);
+				
+				// call the method for displaying the toast
+				displayToast();
+				
 				// check to make sure there was an active network
-				if (connected)
+				if (connected == true)
 				{
 					try {
 						// create a URL object from the api strings
@@ -199,38 +164,6 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
-		
-		// add the child views to the sublayout
-		subLayout.addView(instText);
-		subLayout.addView(radios);
-		
-		// add the child views to the left detailView layout
-		leftDetailView.addView(header);
-		leftDetailView.addView(currentCondition);
-		leftDetailView.addView(temp);
-		leftDetailView.addView(humidity);
-		leftDetailView.addView(windSpeed);
-		leftDetailView.addView(windDir);
-		
-		/*// add the child views to the right detaliView layout
-		rightDetailView.addView(currentConditionValue);
-		rightDetailView.addView(tempValue);
-		rightDetailView.addView(humidityValue);
-		rightDetailView.addView(windSpeedValue);
-		rightDetailView.addView(windDirValue);*/
-		
-		// add the child views to the detail layout
-		detailLayout.addView(leftDetailView);
-		
-		// add the child views to the mainlayout
-		mainLayout.addView(titleText);
-		mainLayout.addView(subLayout);
-		mainLayout.addView(sendBtn);
-		mainLayout.addView(detailLayout);
-		
-		// set the content view
-		setContentView(mainLayout);
-
 	}
 
 	@Override
@@ -238,6 +171,29 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	// method for showing the proper toast
+	private void displayToast()
+	{
+		String conType = connectionManager.getConnectionType(this);
+		
+		// create the Toast object
+		Toast msg = UIFactory.createToast("", true);
+		
+		if (connected == true)
+		{
+			// set the toast text
+			msg.setText(conType + "Network detected");
+		}
+		else
+		{
+			// set the toast text
+			msg.setText("No Connection");
+		}
+		
+		// show the toast
+		msg.show();
 	}
 	
 	// android class thread for asynchronous requests
@@ -286,11 +242,11 @@ public class MainActivity extends Activity {
 			}
 			
 			// set the detail view data
-			currentCondition.setText("Current Condition: " + condition);
-			humidity.setText("Humidity: " + humidityf);
-			temp.setText("Temperature: " + tempf);
-			windSpeed.setText("Wind Speed: " + windSpeedm);
-			windDir.setText("Wind Direction: " + windDirection);
+			currentCondition.setText(condition);
+			humidity.setText(humidityf);
+			temp.setText(tempf);
+			windSpeed.setText(windSpeedm);
+			windDir.setText(windDirection);
 			header.setText("Current Conditions");
 			
 			// save the data to hash
