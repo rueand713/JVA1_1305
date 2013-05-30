@@ -17,5 +17,8 @@
     <string name="temp">Temperature </string>
     <string name="winspd">Wind Speed </string>
     <string name="windir">Wind Direction </string>
+    <string name="logo">App Logo</string>
+    <string name="blank"> </string>
+    <string name="current">Current Weather</string>
 
 </resources>

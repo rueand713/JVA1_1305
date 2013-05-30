@@ -3,7 +3,6 @@ package com.randerson.java1project3;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,6 +21,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -31,6 +31,9 @@ public class MainActivity extends Activity {
 
 	// creates a new instance of the CreateUI class
 	CreateUI UIFactory = new CreateUI(this);
+	
+	// setup the main Linear Layout
+	LinearLayout container;
 	
 	// setup the views for weather detail layout
 	TextView currentCondition;
@@ -66,6 +69,13 @@ public class MainActivity extends Activity {
 		// set the context
 		_context = this;
 		
+		// set the linear layout
+		container = (LinearLayout) findViewById(R.id.mainll);
+		
+		// inflate the xml view
+		@SuppressWarnings("unused")
+		LinearLayout details = (LinearLayout) getLayoutInflater().inflate(R.layout.details, container, true);
+		
 		// load the previous hashfile
 		memHash = (HashMap<String, String>) ioManager.readObjectFile(this, "history", false);
 		
@@ -81,10 +91,11 @@ public class MainActivity extends Activity {
 		final String restStringA = "http://api.worldweatheronline.com/free/v1/weather.ashx?q=";
 		final String restStringB = "&format=json&num_of_days=5&key=" + apiKey;
 		
-		// creates the textViews with the UIFactory instance
+		// sets the textViews from layout file
 		header = (TextView) findViewById(R.id.conditionheader);
+		header.setText("No Previous Conditions");
 		
-		// creates the text views for the weather detail layout
+		// sets the text views for the weather detail layout
 		currentCondition = (TextView) findViewById(R.id.currentcondition);
 		temp = (TextView) findViewById(R.id.tempcondition);
 		humidity = (TextView) findViewById(R.id.humiditycondition);
@@ -111,8 +122,8 @@ public class MainActivity extends Activity {
 			// sets the previous header text
 			header.setText("Previous Conditions");
 		}
-		
-		// create the radiogroup with the UIFactory instance
+	
+		// sets the radiogroup 
 		radios = (RadioGroup) findViewById(R.id.locales);
 		
 		// creates the button with the UIFactory instance

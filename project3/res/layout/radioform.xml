@@ -1,16 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    style="@style/AppBaseTheme">
     
     <TextView android:id="@+id/title"
         android:layout_width="match_parent" 
         android:layout_height="wrap_content" 
         android:paddingBottom="10dip"
         android:text="@string/titletext"
+        style="@style/Titles"
     />
-    
+
+    <ViewFlipper android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoStart="true"
+        >
+        <ImageView
+        android:id="@+id/weatherimage"
+        style="@style/ImageStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/sunny" />
+        
+        <ImageView
+        android:id="@+id/weatherimage2"
+        style="@style/ImageStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/cloudy" />
+        
+        <ImageView
+        android:id="@+id/weatherimage3"
+        style="@style/ImageStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/rainy" />
+        
+    </ViewFlipper>
+
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -20,14 +53,15 @@
 	        android:layout_height="wrap_content" 
 	        android:paddingBottom="10dip"
 	        android:text="@string/instructions"
+	        style="@style/Titles"
     	/>
         
         <RadioGroup android:id="@+id/locales" android:layout_width="wrap_content" 
         	android:layout_height="match_parent">
-	        <RadioButton android:text="@string/houston"/>
-	        <RadioButton android:text="@string/chicago"/>
-	        <RadioButton android:text="@string/miami"/>
-	        <RadioButton android:text="@string/seattle"/>
+	        <RadioButton android:text="@string/houston" style="@style/RadioStyle"/>
+	        <RadioButton android:text="@string/chicago" style="@style/RadioStyle"/>
+	        <RadioButton android:text="@string/miami" style="@style/RadioStyle"/>
+	        <RadioButton android:text="@string/seattle" style="@style/RadioStyle"/>
     	</RadioGroup>
         
     </LinearLayout>
@@ -37,72 +71,5 @@
         android:layout_height="wrap_content"
         android:text="@string/buttontext"
     />
-    
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        
-        <TextView android:id="@+id/conditionheader" 
-            	android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Current Weather"
-                android:textAlignment="center"
-                android:paddingBottom="10dip"/>
-        
-        <GridLayout android:id="@+id/gridconditions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2">
-            
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/condition"/>
-            
-            <TextView android:id="@+id/currentcondition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" "/>
-            
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/temp"/>
-            
-            <TextView android:id="@+id/tempcondition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" "/>
-            
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/humidity"/>
-            
-            <TextView android:id="@+id/humiditycondition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" "/>
-            
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/winspd"/>
-            
-            <TextView android:id="@+id/winspdcondition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" "/>
-            
-           <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/windir"/>
-            
-            <TextView android:id="@+id/windircondition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" "/>
-            
-        </GridLayout>
-        
-    </LinearLayout>
-
-    
 
 </LinearLayout>
