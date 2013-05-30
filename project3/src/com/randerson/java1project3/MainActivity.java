@@ -66,29 +66,8 @@ public class MainActivity extends Activity {
 		// set the context
 		_context = this;
 		
-		// save the hash to internal storage
-					Boolean success = ioManager.writeStringFile(_context, "hello", "history", false);
-					
-					String suc = "failed";
-					
-					if (success)
-					{
-						suc = "Success";
-					}
-					
-					Log.i("ALERT", suc);
-		
 		// load the previous hashfile
-		memHash = (HashMap<String, String>) ioManager.readObjectFile(this, "history", true);
-		
-		String mem = "NULL";
-		
-		if (memHash != null)
-		{
-			mem = "SAVED";
-		}
-		
-		Log.i("MEMORY", mem);
+		memHash = (HashMap<String, String>) ioManager.readObjectFile(this, "history", false);
 		
 		// checks if there is a network connection
 		connected = connectionManager.getConnectionStatus(this);
@@ -268,15 +247,8 @@ public class MainActivity extends Activity {
 			windDir.setText(windDirection);
 			header.setText("Current Conditions");
 			
-			// save the data to hash
-			/*ioManager.setStorageHash("cond", condition, memHash);
-			ioManager.setStorageHash("humi", humidityf, memHash);
-			ioManager.setStorageHash("temp", tempf, memHash);
-			ioManager.setStorageHash("wspd", windSpeedm, memHash);
-			ioManager.setStorageHash("wdir", windDirection, memHash);
-			*/
+			// create a hashmap and save the data to the hashmap
 			memHash = new HashMap<String, String>();
-			
 			memHash.put("cond", condition);
 			memHash.put("humi", humidityf);
 			memHash.put("temp", tempf);
@@ -284,18 +256,7 @@ public class MainActivity extends Activity {
 			memHash.put("wdir", windDirection);
 			
 			// save the hash to internal storage
-			Boolean success = ioManager.writeObjectFile(_context, "hello", "history", false);
-			
-			String suc = "failed";
-			
-			if (success)
-			{
-				suc = "Success";
-			}
-			
-			Log.i("ALERT", suc);
-			
-			
+			ioManager.writeObjectFile(_context, memHash, "history", false);
 		}
 	}
 

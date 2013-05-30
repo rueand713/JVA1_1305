@@ -27,19 +27,19 @@ public class ioManager {
 			// checks if the read is to be done for internal or external storage
 			if (isInternal)
 			{
-				// create a new File object using the application directory
-				file = new File(context.getExternalFilesDir(null), name);
-				
-				// create a new FileInputStream with the file object
-				fileInput = new FileInputStream(file);
-			}
-			else
-			{
 				// create a new File object with the file name
 				file = new File(name);
 				
 				// opens a FileInputStream for the file name
 				fileInput = context.openFileInput(name);
+			}
+			else
+			{
+				// create a new File object using the application directory
+				file = new File(context.getExternalFilesDir(null), name);
+				
+				// create a new FileInputStream with the file object
+				fileInput = new FileInputStream(file);
 			}
 			
 			// create a new BufferInputStream object
@@ -137,19 +137,19 @@ public class ioManager {
 				// checks if the read is to be done for internal or external storage
 				if (isInternal)
 				{
-					// create a new File object using the application directory
-					file = new File(context.getExternalFilesDir(null), name);
-					
-					// create a new FileInputStream with the file object
-					fileInput = new FileInputStream(file);
-				}
-				else
-				{
 					// create a new File object with the file name
 					file = new File(name);
 					
 					// opens a FileInputStream for the file name
 					fileInput = context.openFileInput(name);
+				}
+				else
+				{
+					// create a new File object using the application directory
+					file = new File(context.getExternalFilesDir(null), name);
+					
+					// create a new FileInputStream with the file object
+					fileInput = new FileInputStream(file);
 				}
 				
 				// create a new object input stream
@@ -170,7 +170,7 @@ public class ioManager {
 				fileInput.close();
 					
 				} catch (IOException e) {
-					Log.e("READ ERROR", "Error reading string content from file.");
+					Log.e("READ ERROR", e.toString());
 					
 					return null;
 				}
